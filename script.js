@@ -6,8 +6,6 @@ const searchBtn = document.querySelector(".search button");
 const weatherSection = document.querySelector(".weather");
 
 async function checkWeather(city) {
-    
-    // Start Loading
     setLoadingState(true);
 
     try {
@@ -23,31 +21,25 @@ async function checkWeather(city) {
         document.querySelector(".city").innerHTML = data.name;
         document.querySelector(".temp").innerHTML = Math.round(data.main.temp) + "°C";
         document.querySelector(".humidity").innerHTML = data.main.humidity + "%";
-        document.querySelector(".wind").innerHTML = data.wind.speed + "Km/h";
+        // Ensure unit is readable in uppercase
+        document.querySelector(".wind").innerHTML = data.wind.speed + " KM/H"; 
 
         const weatherIcon = document.getElementById("cloud");
         updateWeatherIcon(data.weather[0].main, weatherIcon);
 
-        // Slide Down
         weatherSection.classList.add("active");
 
     } catch (error) {
-        // Slide Up (Hide)
         weatherSection.classList.remove("active");
         
-        // SweetAlert Configuration for "Stack" look
         Swal.fire({
-            title: 'Oops!',
-            text: 'City not found. Please check the spelling.',
+            title: 'OOPS!', // Uppercase to match font
+            text: 'City not found or spelling mistake.',
             icon: 'error',
-            confirmButtonText: 'Okay',
+            confirmButtonText: 'OKAY',
             background: '#fff',
             confirmButtonColor: '#333',
-            // IMPORTANT: Prevents layout shifting/jumping
-            heightAuto: false, 
-            customClass: {
-                popup: 'my-swal-stack'
-            }
+            heightAuto: false 
         });
     } finally {
         setLoadingState(false);
@@ -55,7 +47,6 @@ async function checkWeather(city) {
 }
 
 function updateWeatherIcon(weatherCondition, iconElement) {
-    // Reset styles
     iconElement.style.color = ""; 
     
     switch (weatherCondition) {
@@ -76,7 +67,7 @@ function updateWeatherIcon(weatherCondition, iconElement) {
         case "Haze":
         case "Fog":
             iconElement.className = "fa-solid fa-smog";
-            iconElement.style.color = "#ccc";
+            iconElement.style.color = "#eee";
             break;
         case "Snow":
             iconElement.className = "fa-solid fa-snowflake";
@@ -94,11 +85,9 @@ function updateWeatherIcon(weatherCondition, iconElement) {
 function setLoadingState(isLoading) {
     if (isLoading) {
         searchBtn.innerHTML = '<span class="loader"></span>';
-        searchBtn.style.opacity = "0.8";
         searchBtn.style.pointerEvents = "none";
     } else {
-        searchBtn.innerHTML = '<span class="btn-text">Search Weather</span> <i class="fa-solid fa-magnifying-glass"></i>';
-        searchBtn.style.opacity = "1";
+        searchBtn.innerHTML = '<span class="btn-text">Search</span> <i class="fa-solid fa-magnifying-glass"></i>';
         searchBtn.style.pointerEvents = "auto";
     }
 }
@@ -112,7 +101,6 @@ searchBtn.addEventListener("click", () => {
 searchBox.addEventListener("keypress", (event) => {
     if (event.key === "Enter" && searchBox.value.trim() !== "") {
         checkWeather(searchBox.value);
-        // Helps close mobile keyboard
         searchBox.blur(); 
     }
 });
