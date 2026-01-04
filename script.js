@@ -5,9 +5,13 @@ const searchBtn = document.querySelector(".search button");
 const weatherIcon = document.getElementById("cloud");
         
 async function checkWeather(city) {
-    const response = await fetch(apiUrl + city + `&appid=${apiKey}`);
-    const data = await response.json();
-
+    try {
+        const response = await fetch(apiUrl + city + `&appid=${apiKey}`);
+        const data = await response.json();
+    } catch (error) {
+        alert("This city ain't exists! or probabily spell mistake!")
+        return;
+    }
     document.querySelector(".city").innerHTML = data.name;
     document.querySelector(".temp").innerHTML = Math.round(data.main.temp) + "°C";
     document.querySelector(".humidity").innerHTML = data.main.humidity + "%";
