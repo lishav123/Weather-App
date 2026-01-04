@@ -2,111 +2,102 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Outfit', sans-serif; /* Applied Cool Google Font */
+    font-family: 'Bebas Neue', sans-serif; /* Applied Bebas Neue */
+    letter-spacing: 1px; /* Looks cleaner with this font */
 }
 
 body {
     background: black;
-    /* Changed to min-height to fix mobile keyboard squishing issue */
-    min-height: 100vh; 
+    min-height: 100vh; /* Fixes mobile keyboard issue */
     display: flex;
     align-items: center;
     justify-content: center;
-    /* Add padding so it doesn't touch edges on small screens */
-    padding: 20px; 
+    padding: 20px;
 }
 
 .card {
     width: 100%;
-    max-width: 400px; /* Slightly narrower for better mobile look */
+    max-width: 400px;
     background: linear-gradient(135deg, #8ee5f4, #c378fc);
     color: black;
-    /* Reduced Border Radius */
-    border-radius: 16px; 
+    border-radius: 20px;
     padding: 30px 25px;
     text-align: center;
-    overflow: hidden; 
-    box-shadow: 0 10px 30px rgba(0,0,0,0.5); /* Added shadow for "stack" depth */
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
 }
 
 .search {
-    width: 100%;
     display: flex;
-    /* Stack input and button vertically */
-    flex-direction: column; 
-    gap: 15px; 
+    flex-direction: column; /* This forces the button below the input */
+    gap: 15px; /* Adds space between them */
+    width: 100%;
 }
 
 .search input {
     border: 0;
     outline: 0;
-    background: rgba(0, 0, 0, 0.8); /* Slightly transparent black */
+    background: black;
     color: white;
     padding: 15px 20px;
-    height: 55px;
-    width: 100%;
-    font-size: 18px;
-    /* Reduced Border Radius */
-    border-radius: 12px; 
+    height: 60px;
+    width: 100%; /* Full width */
+    font-size: 22px; /* Increased font size for Bebas */
+    border-radius: 15px;
 }
 
 .search button {
     border: 0;
     outline: 0;
-    background: linear-gradient(90deg, #ff00cc, #333399); 
-    /* Reduced Border Radius */
-    border-radius: 12px; 
+    background: linear-gradient(90deg, #ff00cc, #333399);
+    border-radius: 15px;
     color: white;
-    font-size: 18px;
+    font-size: 20px;
     cursor: pointer;
-    height: 55px;
-    width: 100%;
+    height: 60px;
+    width: 100%; /* Full width */
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 12px;
-    font-weight: 500;
-    transition: transform 0.2s, background 0.3s;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    gap: 10px;
+    transition: transform 0.2s;
 }
 
 .search button:active {
     transform: scale(0.98);
 }
 
-/* Weather Icons & Text */
 #cloud {
-    font-size: 90px;
+    font-size: 100px;
     margin-top: 20px;
-    filter: drop-shadow(0 10px 10px rgba(0,0,0,0.2));
+    filter: drop-shadow(0 5px 15px rgba(0,0,0,0.2));
 }
 
 #icon {
-    font-size: 32px;
+    font-size: 35px;
     color: white;
 }
 
 .weather h1 {
-    font-size: 70px;
-    font-weight: 700;
+    font-size: 80px;
+    font-weight: 500;
     color: #1a1a1a;
+    line-height: 1;
     margin: 10px 0;
 }
 
 .weather h2 {
-    font-size: 35px;
-    font-weight: 500;
+    font-size: 40px;
+    font-weight: 400;
     color: #1a1a1a;
     margin-top: -10px;
-    text-transform: uppercase;
-    letter-spacing: 1px;
 }
 
 .details {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0 20px;
+    padding: 0 10px;
     margin-top: 40px;
 }
 
@@ -118,21 +109,19 @@ body {
 }
 
 .humidity, .wind {
-    font-size: 24px;
-    font-weight: 700;
+    font-size: 28px;
 }
 
 .col p {
-    font-size: 14px;
+    font-size: 18px; /* Slightly larger for readability */
 }
 
-/* SLIDE ANIMATION */
+/* ANIMATION */
 .weather {
     max-height: 0;
     opacity: 0;
-    overflow: hidden; 
-    transition: max-height 0.6s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.4s ease-in;
-    margin-top: 0;
+    overflow: hidden;
+    transition: max-height 0.6s ease-out, opacity 0.4s ease-in;
 }
 
 .weather.active {
@@ -141,7 +130,7 @@ body {
     margin-top: 20px;
 }
 
-/* LOADING SPINNER */
+/* SPINNER */
 .loader {
     width: 24px;
     height: 24px;
