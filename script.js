@@ -6,9 +6,17 @@ const searchBtn = document.querySelector(".search button");
 const weatherSection = document.querySelector(".weather");
 
 async function checkWeather(city) {
+    
+    // 1. Reset: Hide previous data immediately to start "Fade Out"
+    weatherSection.classList.remove("active");
+    
+    // 2. Show Loading Spinner
     setLoadingState(true);
 
     try {
+        // Add a tiny delay so the fade-out animation is noticeable before the fetch finishes (optional but looks smoother)
+        await new Promise(r => setTimeout(r, 300));
+
         const response = await fetch(apiUrl + city + `&appid=${apiKey}`);
         
         if (!response.ok) {
@@ -17,23 +25,24 @@ async function checkWeather(city) {
 
         const data = await response.json();
 
-        // Update UI
+        // 3. Update DOM Elements
         document.querySelector(".city").innerHTML = data.name;
         document.querySelector(".temp").innerHTML = Math.round(data.main.temp) + "°C";
         document.querySelector(".humidity").innerHTML = data.main.humidity + "%";
-        // Ensure unit is readable in uppercase
         document.querySelector(".wind").innerHTML = data.wind.speed + " KM/H"; 
 
         const weatherIcon = document.getElementById("cloud");
         updateWeatherIcon(data.weather[0].main, weatherIcon);
 
+        // 4. Success: Slide Down and Fade In new data
         weatherSection.classList.add("active");
 
     } catch (error) {
+        // 5. Error: Keep hidden and show Alert
         weatherSection.classList.remove("active");
         
         Swal.fire({
-            title: 'OOPS!', // Uppercase to match font
+            title: 'OOPS!',
             text: 'City not found or spelling mistake.',
             icon: 'error',
             confirmButtonText: 'OKAY',
