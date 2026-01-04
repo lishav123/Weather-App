@@ -3,15 +3,19 @@
     padding:0;
     box-sizing: border-box;
 }
-body{
+body {
     background:black;
+    width: 98vw;
+    height: 98vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 .card{
     width:90%;
     max-width:470px;
     background:linear-gradient(125deg,#8ee5f4, #c378fc);
     color:black;
-    margin:100px auto 0;
     border-radius:25px;
     padding:40px 20px;
     text-align:center;
