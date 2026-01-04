@@ -41,7 +41,13 @@ async function checkWeather(city) {
        
         document.querySelector(".weather").style.display = "block";
     } catch (error) {
-        alert("This city ain't exists! or probabily spell mistake!")
+        Swal.fire({
+          title: 'Error, not found anything!',
+          text: 'Probabily, spelling mistake!',
+          icon: 'error',
+          confirmButtonText: 'Cool'
+        });
+        document.querySelector(".weather").style.display = "none";
     }
 }
 
