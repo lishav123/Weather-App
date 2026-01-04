@@ -5,7 +5,7 @@ const searchBtn = document.querySelector(".search button");
 const weatherIcon = document.getElementById("cloud");
         
 async function checkWeather(city) {
-    const response = await fetch(apiUrl + city + `&appid=${apiKey}`);xz
+    const response = await fetch(apiUrl + city + `&appid=${apiKey}`);
     const data = await response.json();
 
     document.querySelector(".city").innerHTML = data.name;
