@@ -1,4 +1,4 @@
-const apiKey = "446f1848e0252d064b4141b48e6013a8";
+const apiKey = "446f1848e0252d064b4141b48e6013a8"; // used because there is not debit or credit card linked to it (not a good idea though)
 const apiUrl = "https://api.openweathermap.org/data/2.5/weather?units=metric&q=";
 
 const searchBox = document.querySelector(".search input");
