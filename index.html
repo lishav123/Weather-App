@@ -3,48 +3,47 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Weather app
-    </title>
-     <link rel="stylesheet" href="style.css">
-     <link
-  rel="stylesheet"
-  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
-/>
-
+    <title>Weather App</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"/>
 </head>
 <body>
     <div class="card">
         <div class="search">
-            <input type="text" placeholder="Enter the city name" spellcheck="false">
-     <button><i class="fa-solid fa-magnifying-glass"></i>
-</button>
+            <input type="text" placeholder="ENTER CITY NAME" spellcheck="false">
+            <button id="searchBtn">
+                <span class="btn-text">Search</span>
+                <i class="fa-solid fa-magnifying-glass"></i>
+            </button>
         </div>
 
         <div class="weather">
-        <i class="fa-solid fa-cloud" id="cloud"></i>
-        <h1 class="temp">22°C
-</h1>
-        <h2 class="city">New York</h2>
-        <div class="details">
-            <div class="col">
-        <i id="icon" class="fa-solid fa-water"></i>
-        <div>
-            <p class="humidity">50%</p>
-            <p>Humidity</p>
-        </div>
-            </div>
+            <i class="fa-solid fa-cloud" id="cloud"></i>
+            <h1 class="temp">22°C</h1>
+            <h2 class="city">New York</h2>
+            <div class="details">
+                <div class="col">
+                    <i id="icon" class="fa-solid fa-water"></i>
+                    <div>
+                        <p class="humidity">50%</p>
+                        <p>HUMIDITY</p>
+                    </div>
+                </div>
 
-
-            <div class="col">
-        <i id="icon" class="fa-solid fa-wind"></i>
-        <div>
-            <p class="wind">50km/hr</p>
-            <p>Wind Speed</p>
-        </div>
+                <div class="col">
+                    <i id="icon" class="fa-solid fa-wind"></i>
+                    <div>
+                        <p class="wind">50KM/H</p>
+                        <p>WIND SPEED</p>
+                    </div>
+                </div>
             </div>
-        </div>
         </div>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="script.js"></script>
 </body>
 </html>
